@@ -1,0 +1,9 @@
+[Unit]
+Description=Autoplank Service
+
+[Service]
+ExecStart=/usr/local/bin/autoplank
+Restart=always
+
+[Install]
+WantedBy=graphical.target
