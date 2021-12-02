@@ -33,14 +33,14 @@ func main() {
 }
 
 var (
-	versionFlag bool
-	interval    = 1
+	versonFlag bool
+	interval   = 200
 )
 
 func init() {
 
-	flag.BoolVar(&versionFlag, "v", versionFlag, "show version")
-	flag.IntVar(&interval, "interval", interval, "mouse poll interval in secs")
+	flag.BoolVar(&versonFlag, "v", versonFlag, "show version")
+	flag.IntVar(&interval, "interval", interval, "mouse poll interval in millisecs")
 
 	flag.Parse()
 
@@ -71,7 +71,7 @@ func (d display) Within(x, y int) bool {
 func (d display) IsBottom(y int) bool {
 	// if the cursor is this low on the screen user is going to use plank
 	// we start the moving procedure
-	yOffset := 100
+	yOffset := 1080
 	return y < d.offset.y+d.axis.y && y > d.offset.y+d.axis.y-yOffset
 }
 
@@ -106,7 +106,7 @@ func pollMouse() <-chan axis {
 	aChan := make(chan axis)
 
 	go func() {
-		for range time.Tick(time.Second * time.Duration(interval)) {
+		for range time.Tick(time.Millisecond * time.Duration(interval)) {
 			pos, err := getMouseLocation()
 			if err != nil {
 				log.Println(err)
