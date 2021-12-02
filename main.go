@@ -173,10 +173,6 @@ func fetchDisplays() ([]display, error) {
 			}
 			return false
 		})
-		if len(vals) < 4 {
-			// no resolution? ignore
-			continue
-		}
 		m.axis.x, _ = strconv.Atoi(vals[0])
 		m.axis.y, _ = strconv.Atoi(vals[1])
 		m.offset.x, _ = strconv.Atoi(vals[2])
@@ -185,7 +181,6 @@ func fetchDisplays() ([]display, error) {
 		displays = append(displays, m)
 	}
 
-	log.Println("Displays found:", displays)
 	return displays, nil
 }
 
