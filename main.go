@@ -33,13 +33,13 @@ func main() {
 }
 
 var (
-	versonFlag bool
+	versionFlag bool
 	interval   = 200
 )
 
 func init() {
 
-	flag.BoolVar(&versonFlag, "v", versonFlag, "show version")
+	flag.BoolVar(&versionFlag, "v", versionFlag, "show version")
 	flag.IntVar(&interval, "interval", interval, "mouse poll interval in millisecs")
 
 	flag.Parse()
